@@ -1,4 +1,8 @@
 package com.crgarridos.injectedsavedinstance.domain
+
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
+
 class SongRepository {
     fun getSongs(): List<Song> {
         return generateSequence(1, Long::inc)
@@ -8,4 +12,5 @@ class SongRepository {
     }
 }
 
-data class Song(val id: Long)
+@Parcelize
+data class Song(val id: Long): Parcelable

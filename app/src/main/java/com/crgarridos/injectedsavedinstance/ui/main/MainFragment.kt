@@ -35,11 +35,14 @@ class MainFragment : Fragment() {
 
         viewModel = ViewModelProviders.of(this,  factory).get(MainViewModel::class.java)
         viewModel.songResults.observeNotNull(viewLifecycleOwner) {
-            message.text = it.joinToString("\n")
+           bindSongs(it)
         }
     }
 
 
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putParcelableArrayList("awesome", ArrayList(viewModel.songResults.value.orEmpty()))
     }
 
     override fun onViewStateRestored(savedInstanceState: Bundle?) {
@@ -48,6 +51,13 @@ class MainFragment : Fragment() {
             viewModel.search(searchField.text.toString())
         }
         Log.d("onViewStateRestored", savedInstanceState.toString())
+        savedInstanceState?.let {
+            bindSongs(it.getParcelableArrayList<Song>("awesome").orEmpty())
+        }
+
     }
 
+    private fun bindSongs(songs: List<Song>) {
+        message.text = songs.joinToString("\n")
+    }
 }

@@ -8,7 +8,7 @@ import com.crgarridos.injectedsavedinstance.domain.Song
 import com.crgarridos.injectedsavedinstance.domain.SongRepository
 
 class MainViewModel(
-    val repository: SongRepository
+    private val repository: SongRepository
 ) : ViewModel() {
 
     private val _songResults = MutableLiveData<List<Song>>()
