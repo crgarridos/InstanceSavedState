@@ -7,9 +7,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 import com.crgarridos.injectedsavedinstance.R
+import com.crgarridos.injectedsavedinstance.domain.Song
 import com.crgarridos.injectedsavedinstance.domain.SongRepository
+import com.crgarridos.injectedsavedinstance.extensions.observeNotNull
 import kotlinx.android.synthetic.main.main_fragment.*
 
 class MainFragment : Fragment() {
@@ -30,11 +34,12 @@ class MainFragment : Fragment() {
         val factory = MainViewModel.Factory(SongRepository())
 
         viewModel = ViewModelProviders.of(this,  factory).get(MainViewModel::class.java)
-        viewModel.songResults.observe(this, Observer {
-            it ?: return@Observer
-
+        viewModel.songResults.observeNotNull(viewLifecycleOwner) {
             message.text = it.joinToString("\n")
-        })
+        }
+    }
+
+
     }
 
     override fun onViewStateRestored(savedInstanceState: Bundle?) {
