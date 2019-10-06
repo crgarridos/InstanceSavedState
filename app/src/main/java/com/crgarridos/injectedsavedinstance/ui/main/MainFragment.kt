@@ -41,6 +41,8 @@ class MainFragment : Fragment() {
         val factory = MainViewModel.Factory(SongRepository())
 
         viewModel = ViewModelProviders.of(this,  factory).get(MainViewModel::class.java)
+
+        viewModel.onInit(savedInstanceState)
         viewModel.songResults.observeNotNull(viewLifecycleOwner) {
            bindSongs(it)
         }
@@ -50,7 +52,7 @@ class MainFragment : Fragment() {
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
-        outState.putParcelableArrayList("awesome", ArrayList(viewModel.songResults.value.orEmpty()))
+        viewModel.onSaveInstanceState(outState)
         Log.d("Fragment", "onSaveInstanceState: $outState")
     }
 
@@ -60,10 +62,6 @@ class MainFragment : Fragment() {
             viewModel.search(searchField.text.toString())
         }
         Log.d("Fragment", "onViewStateRestored: $savedInstanceState")
-
-        savedInstanceState?.let {
-            bindSongs(it.getParcelableArrayList<Song>("awesome").orEmpty())
-        }
 
     }
 
