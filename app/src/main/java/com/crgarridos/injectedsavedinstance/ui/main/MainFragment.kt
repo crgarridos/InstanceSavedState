@@ -26,7 +26,14 @@ class MainFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View {
+
+        Log.d("Fragment", "onCreateView: $savedInstanceState")
         return inflater.inflate(R.layout.main_fragment, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        Log.d("Fragment", "onViewCreated: $savedInstanceState")
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -37,12 +44,14 @@ class MainFragment : Fragment() {
         viewModel.songResults.observeNotNull(viewLifecycleOwner) {
            bindSongs(it)
         }
+        Log.d("Fragment", "onActivityCreated: $savedInstanceState")
     }
 
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
         outState.putParcelableArrayList("awesome", ArrayList(viewModel.songResults.value.orEmpty()))
+        Log.d("Fragment", "onSaveInstanceState: $outState")
     }
 
     override fun onViewStateRestored(savedInstanceState: Bundle?) {
@@ -50,7 +59,8 @@ class MainFragment : Fragment() {
         searchButton.setOnClickListener {
             viewModel.search(searchField.text.toString())
         }
-        Log.d("onViewStateRestored", savedInstanceState.toString())
+        Log.d("Fragment", "onViewStateRestored: $savedInstanceState")
+
         savedInstanceState?.let {
             bindSongs(it.getParcelableArrayList<Song>("awesome").orEmpty())
         }

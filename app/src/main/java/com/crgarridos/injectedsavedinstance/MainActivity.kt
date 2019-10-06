@@ -2,6 +2,7 @@ package com.crgarridos.injectedsavedinstance
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import com.crgarridos.injectedsavedinstance.ui.main.MainFragment
 
 class MainActivity : AppCompatActivity() {
@@ -14,6 +15,19 @@ class MainActivity : AppCompatActivity() {
                 .replace(R.id.container, MainFragment.newInstance())
                 .commitNow()
         }
+        Log.d("Activity", "onCreate: $savedInstanceState")
+    }
+
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putInt("awesome2", 1313)
+        Log.d("Activity", "onSaveInstanceState: $outState")
+    }
+
+    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
+        super.onRestoreInstanceState(savedInstanceState)
+        Log.d("Activity", "onRestoreInstanceState: $savedInstanceState")
     }
 
 }
