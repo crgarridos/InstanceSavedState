@@ -42,7 +42,7 @@ class MainFragment : Fragment() {
 
         viewModel = ViewModelProviders.of(this,  factory).get(MainViewModel::class.java)
 
-        viewModel.onInit(savedInstanceState)
+        viewModel.onInit(savedInstanceState ?: Bundle.EMPTY)
         viewModel.songResults.observeNotNull(viewLifecycleOwner) {
            bindSongs(it)
         }
