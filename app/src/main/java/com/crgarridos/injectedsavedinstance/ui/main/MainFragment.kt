@@ -38,11 +38,10 @@ class MainFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        val factory = MainViewModel.Factory(SongRepository())
+        val factory = MainViewModel.Factory(SongRepository(), savedInstanceState)
 
         viewModel = ViewModelProviders.of(this,  factory).get(MainViewModel::class.java)
 
-        viewModel.onInit(savedInstanceState ?: Bundle.EMPTY)
         viewModel.songResults.observeNotNull(viewLifecycleOwner) {
            bindSongs(it)
         }

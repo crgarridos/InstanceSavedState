@@ -10,17 +10,15 @@ import com.crgarridos.injectedsavedinstance.domain.SongRepository
 
 
 class MainViewModel(
-    private val repository: SongRepository
+    private val repository: SongRepository,
+    private val instanceState: Bundle
 ) : ViewModel() {
-
-    private val instanceState: Bundle = Bundle()
 
     private val _songResults = MutableLiveData<List<Song>>()
     val songResults: LiveData<List<Song>>
         get() = _songResults
 
-    fun onInit(savedInstanceState: Bundle) {
-        instanceState.putAll(savedInstanceState)
+    init {
         instanceState.getString("name")
             ?.let(::search)
     }
@@ -35,9 +33,12 @@ class MainViewModel(
             .filter { name in it.id.toString() }
     }
 
-    class Factory(private val repository: SongRepository) : ViewModelProvider.Factory {
+    class Factory(
+        private val repository: SongRepository,
+        private val instanceState: Bundle?
+    ) : ViewModelProvider.Factory {
         override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-            return MainViewModel(repository) as T
+            return MainViewModel(repository, instanceState ?: Bundle()) as T
         }
     }
 }
