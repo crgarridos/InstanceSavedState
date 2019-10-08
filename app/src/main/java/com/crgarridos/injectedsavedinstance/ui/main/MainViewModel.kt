@@ -1,17 +1,14 @@
 package com.crgarridos.injectedsavedinstance.ui.main
 
-import android.os.Bundle
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.*
+import androidx.savedstate.SavedStateRegistryOwner
 import com.crgarridos.injectedsavedinstance.domain.Song
 import com.crgarridos.injectedsavedinstance.domain.SongRepository
 
 
 class MainViewModel(
     private val repository: SongRepository,
-    private val instanceState: Bundle
+    private val handle: SavedStateHandle
 ) : ViewModel() {
 
     private val _songResults = MutableLiveData<List<Song>>()
@@ -19,26 +16,26 @@ class MainViewModel(
         get() = _songResults
 
     init {
-        instanceState.getString("name")
+        handle.get<String>("name")
             ?.let(::search)
     }
 
-    fun onSaveInstanceState(outState: Bundle) {
-        outState.putAll(instanceState)
-    }
-
     fun search(name: String) {
-        instanceState.putString("name", name)
+        handle.set("name", name)
         _songResults.value = repository.getSongs()
             .filter { name in it.id.toString() }
     }
 
     class Factory(
         private val repository: SongRepository,
-        private val instanceState: Bundle?
-    ) : ViewModelProvider.Factory {
-        override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-            return MainViewModel(repository, instanceState ?: Bundle()) as T
+        private val owner: SavedStateRegistryOwner
+    ) : AbstractSavedStateViewModelFactory(owner, null) {
+        override fun <T : ViewModel?> create(
+            key: String,
+            modelClass: Class<T>,
+            handle: SavedStateHandle
+        ): T {
+            return MainViewModel(repository, handle) as T
         }
     }
 }

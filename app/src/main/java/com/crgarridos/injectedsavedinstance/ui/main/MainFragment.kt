@@ -1,15 +1,13 @@
 package com.crgarridos.injectedsavedinstance.ui.main
 
-import androidx.lifecycle.ViewModelProviders
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.LifecycleOwner
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.Observer
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import com.crgarridos.injectedsavedinstance.R
 import com.crgarridos.injectedsavedinstance.domain.Song
 import com.crgarridos.injectedsavedinstance.domain.SongRepository
@@ -22,11 +20,16 @@ class MainFragment : Fragment() {
         fun newInstance() = MainFragment()
     }
 
-    private lateinit var viewModel: MainViewModel
+    lateinit var factory: MainViewModel.Factory
+    private val viewModel: MainViewModel by viewModels { factory }
+
+    override fun onAttach(context: Context) {
+        factory = MainViewModel.Factory(SongRepository(), this)
+        super.onAttach(context)
+    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View {
-
         Log.d("Fragment", "onCreateView: $savedInstanceState")
         return inflater.inflate(R.layout.main_fragment, container, false)
     }
@@ -38,9 +41,6 @@ class MainFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        val factory = MainViewModel.Factory(SongRepository(), savedInstanceState)
-
-        viewModel = ViewModelProviders.of(this,  factory).get(MainViewModel::class.java)
 
         viewModel.songResults.observeNotNull(viewLifecycleOwner) {
            bindSongs(it)
@@ -51,7 +51,6 @@ class MainFragment : Fragment() {
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
-        viewModel.onSaveInstanceState(outState)
         Log.d("Fragment", "onSaveInstanceState: $outState")
     }
 
