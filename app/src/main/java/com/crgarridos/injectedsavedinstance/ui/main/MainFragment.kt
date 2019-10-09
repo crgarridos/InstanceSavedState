@@ -1,32 +1,26 @@
 package com.crgarridos.injectedsavedinstance.ui.main
 
-import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.crgarridos.injectedsavedinstance.R
 import com.crgarridos.injectedsavedinstance.domain.Song
-import com.crgarridos.injectedsavedinstance.domain.SongRepository
 import com.crgarridos.injectedsavedinstance.extensions.observeNotNull
+import dagger.android.support.DaggerFragment
 import kotlinx.android.synthetic.main.main_fragment.*
+import javax.inject.Inject
 
-class MainFragment : Fragment() {
+class MainFragment : DaggerFragment() {
 
     companion object {
         fun newInstance() = MainFragment()
     }
 
-    lateinit var factory: MainViewModel.Factory
+    @Inject lateinit var factory: MainViewModel.Factory
     private val viewModel: MainViewModel by viewModels { factory }
-
-    override fun onAttach(context: Context) {
-        factory = MainViewModel.Factory(SongRepository(), this)
-        super.onAttach(context)
-    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View {

@@ -4,6 +4,7 @@ import androidx.lifecycle.*
 import androidx.savedstate.SavedStateRegistryOwner
 import com.crgarridos.injectedsavedinstance.domain.Song
 import com.crgarridos.injectedsavedinstance.domain.SongRepository
+import javax.inject.Inject
 
 
 class MainViewModel(
@@ -26,7 +27,7 @@ class MainViewModel(
             .filter { name in it.id.toString() }
     }
 
-    class Factory(
+    class Factory @Inject constructor(
         private val repository: SongRepository,
         private val owner: SavedStateRegistryOwner
     ) : AbstractSavedStateViewModelFactory(owner, null) {
@@ -39,3 +40,6 @@ class MainViewModel(
         }
     }
 }
+
+
+///TODO livedata from saved state lib
