@@ -4,6 +4,7 @@ import androidx.lifecycle.*
 import androidx.savedstate.SavedStateRegistryOwner
 import com.crgarridos.injectedsavedinstance.domain.Song
 import com.crgarridos.injectedsavedinstance.domain.SongRepository
+import com.crgarridos.injectedsavedinstance.extensions.savedState
 import javax.inject.Inject
 
 
@@ -12,17 +13,18 @@ class MainViewModel(
     private val handle: SavedStateHandle
 ) : ViewModel() {
 
+    private var name by savedState<String>("name", handle)
+
     private val _songResults = MutableLiveData<List<Song>>()
     val songResults: LiveData<List<Song>>
         get() = _songResults
 
     init {
-        handle.get<String>("name")
-            ?.let(::search)
+        name?.let(::search)
     }
 
     fun search(name: String) {
-        handle.set("name", name)
+        this.name = name
         _songResults.value = repository.getSongs()
             .filter { name in it.id.toString() }
     }
