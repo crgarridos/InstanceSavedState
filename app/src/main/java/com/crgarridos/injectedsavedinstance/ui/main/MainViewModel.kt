@@ -1,16 +1,20 @@
 package com.crgarridos.injectedsavedinstance.ui.main
 
-import androidx.lifecycle.*
-import androidx.savedstate.SavedStateRegistryOwner
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.SavedStateHandle
+import androidx.lifecycle.ViewModel
 import com.crgarridos.injectedsavedinstance.domain.Song
 import com.crgarridos.injectedsavedinstance.domain.SongRepository
 import com.crgarridos.injectedsavedinstance.extensions.savedState
-import javax.inject.Inject
+import com.crgarridos.injectedsavedinstance.injection.viewmodel.ViewModelAssistedFactory
+import com.squareup.inject.assisted.Assisted
+import com.squareup.inject.assisted.AssistedInject
 
 
-class MainViewModel(
+class MainViewModel @AssistedInject constructor(
     private val repository: SongRepository,
-    private val handle: SavedStateHandle
+    @Assisted private val handle: SavedStateHandle
 ) : ViewModel() {
 
     private var name by savedState<String>("name", handle)
@@ -29,19 +33,6 @@ class MainViewModel(
             .filter { name in it.id.toString() }
     }
 
-    class Factory @Inject constructor(
-        private val repository: SongRepository,
-        private val owner: SavedStateRegistryOwner
-    ) : AbstractSavedStateViewModelFactory(owner, null) {
-        override fun <T : ViewModel?> create(
-            key: String,
-            modelClass: Class<T>,
-            handle: SavedStateHandle
-        ): T {
-            return MainViewModel(repository, handle) as T
-        }
-    }
+    @AssistedInject.Factory
+    interface AssistedFactory: ViewModelAssistedFactory<MainViewModel>
 }
-
-
-///TODO livedata from saved state lib

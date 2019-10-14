@@ -9,6 +9,7 @@ import androidx.fragment.app.viewModels
 import com.crgarridos.injectedsavedinstance.R
 import com.crgarridos.injectedsavedinstance.domain.Song
 import com.crgarridos.injectedsavedinstance.extensions.observeNotNull
+import com.crgarridos.injectedsavedinstance.injection.viewmodel.ViewModelFactory
 import dagger.android.support.DaggerFragment
 import kotlinx.android.synthetic.main.main_fragment.*
 import javax.inject.Inject
@@ -19,7 +20,7 @@ class MainFragment : DaggerFragment() {
         fun newInstance() = MainFragment()
     }
 
-    @Inject lateinit var factory: MainViewModel.Factory
+    @Inject lateinit var factory: ViewModelFactory<MainViewModel, MainViewModel.AssistedFactory>
     private val viewModel: MainViewModel by viewModels { factory }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
