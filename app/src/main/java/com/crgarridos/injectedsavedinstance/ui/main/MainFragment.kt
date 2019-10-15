@@ -17,36 +17,20 @@ import javax.inject.Inject
 class MainFragment : DaggerFragment() {
 
     companion object {
-        fun newInstance() = MainFragment()
+        fun newInstance(): MainFragment = MainFragment()
     }
 
     @Inject lateinit var factory: ViewModelFactory<MainViewModel, MainViewModel.AssistedFactory>
     private val viewModel: MainViewModel by viewModels { factory }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View {
-        Log.d("Fragment", "onCreateView: $savedInstanceState")
-        return inflater.inflate(R.layout.main_fragment, container, false)
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        Log.d("Fragment", "onViewCreated: $savedInstanceState")
-    }
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, s: Bundle?): View? =
+        inflater.inflate(R.layout.main_fragment, container, false)
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-
         viewModel.songResults.observeNotNull(viewLifecycleOwner) {
-           bindSongs(it)
+            bindSongs(it)
         }
-        Log.d("Fragment", "onActivityCreated: $savedInstanceState")
-    }
-
-
-    override fun onSaveInstanceState(outState: Bundle) {
-        super.onSaveInstanceState(outState)
-        Log.d("Fragment", "onSaveInstanceState: $outState")
     }
 
     override fun onViewStateRestored(savedInstanceState: Bundle?) {
@@ -54,8 +38,6 @@ class MainFragment : DaggerFragment() {
         searchButton.setOnClickListener {
             viewModel.search(searchField.text.toString())
         }
-        Log.d("Fragment", "onViewStateRestored: $savedInstanceState")
-
     }
 
     private fun bindSongs(songs: List<Song>) {

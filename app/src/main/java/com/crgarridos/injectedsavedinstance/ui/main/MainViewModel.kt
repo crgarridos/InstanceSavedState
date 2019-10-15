@@ -23,14 +23,11 @@ class MainViewModel @AssistedInject constructor(
     val songResults: LiveData<List<Song>>
         get() = _songResults
 
-    init {
-        name?.let(::search)
-    }
+    init { name?.let(::search) }
 
     fun search(name: String) {
         this.name = name
-        _songResults.value = repository.getSongs()
-            .filter { name in it.id.toString() }
+        _songResults.value = repository.getSongsByName(name)
     }
 
     @AssistedInject.Factory

@@ -5,10 +5,11 @@ import kotlinx.android.parcel.Parcelize
 import javax.inject.Inject
 
 class SongRepository @Inject constructor() {
-    fun getSongs(): List<Song> {
+    fun getSongsByName(name: String): List<Song> {
         return generateSequence(1, Long::inc)
             .map(::Song)
             .take(50)
+            .filter { name in it.id.toString() }
             .toList()
     }
 }
