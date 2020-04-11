@@ -3,19 +3,25 @@ package com.crgarridos.injectedsavedinstance
 import android.app.Activity
 import android.app.Application
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import timber.log.Timber
 
-class LogActivityLifecycleCallbacks(private val enabled: Boolean) :
-    Application.ActivityLifecycleCallbacks {
+class LogActivityLifecycleCallbacks : Application.ActivityLifecycleCallbacks {
 
     private fun log(activity: Activity, event: String, bundle: Bundle? = null) = Timber
         .tag("LifecycleEvent")
         .v("${activity::class.simpleName}.$event${bundle?.let { " $it" }.orEmpty()}")
 
+    private val fragmentLifecycleCallbacks = LogFragmentLifecycleCallbacks()
+
     override fun onActivityCreated(
         activity: Activity,
         savedInstanceState: Bundle?
-    ) = log(activity, "onActivityCreated")
+    ) = log(activity, "onActivityCreated").also {
+        with(activity as AppCompatActivity) {
+            supportFragmentManager.registerFragmentLifecycleCallbacks(fragmentLifecycleCallbacks, true)
+        }
+    }
 
     override fun onActivityStarted(activity: Activity) = log(activity, "onActivityStarted")
 

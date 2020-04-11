@@ -13,6 +13,6 @@ class DemoApp : DaggerApplication() {
     override fun onCreate() {
         super.onCreate()
         Timber.plant(Timber.DebugTree())
-        registerActivityLifecycleCallbacks(LogActivityLifecycleCallbacks(true))
+        registerActivityLifecycleCallbacks(LogActivityLifecycleCallbacks())
     }
 }
