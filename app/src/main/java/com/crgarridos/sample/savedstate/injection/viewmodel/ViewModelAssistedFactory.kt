@@ -10,7 +10,7 @@ interface ViewModelAssistedFactory<T: ViewModel> {
     fun create(handle: SavedStateHandle): T
 }
 
-class ViewModelFactory<VM, AF> @Inject constructor(
+class SavedStateViewModelFactory<VM, AF> @Inject constructor(
     private val factory: AF, owner: SavedStateRegistryOwner
 ) : AbstractSavedStateViewModelFactory(owner, null)
         where VM: ViewModel, AF: ViewModelAssistedFactory<VM> {

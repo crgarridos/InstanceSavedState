@@ -5,7 +5,7 @@ import androidx.fragment.app.viewModels
 import com.crgarridos.sample.savedstate.R
 import com.crgarridos.sample.savedstate.domain.Song
 import com.crgarridos.sample.savedstate.extensions.observeNotNull
-import com.crgarridos.sample.savedstate.injection.viewmodel.ViewModelFactory
+import com.crgarridos.sample.savedstate.injection.viewmodel.SavedStateViewModelFactory
 import dagger.android.support.DaggerFragment
 import kotlinx.android.synthetic.main.main_fragment.*
 import javax.inject.Inject
@@ -17,7 +17,7 @@ class SavedStateHandleFragment : DaggerFragment(R.layout.main_fragment) {
             SavedStateHandleFragment()
     }
 
-    @Inject lateinit var factory: ViewModelFactory<SavedStateHandleViewModel, SavedStateHandleViewModel.AssistedFactory>
+    @Inject lateinit var factory: SavedStateViewModelFactory<SavedStateHandleViewModel, SavedStateHandleViewModel.AssistedFactory>
     private val viewModel: SavedStateHandleViewModel by viewModels { factory }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
