@@ -1,4 +1,4 @@
-package com.crgarridos.sample.savedstate.injection
+package com.crgarridos.sample.savedstate.application.injection
 
 import com.crgarridos.sample.savedstate.application.DemoApp
 import com.crgarridos.sample.savedstate.ui.injection.ActivityModule

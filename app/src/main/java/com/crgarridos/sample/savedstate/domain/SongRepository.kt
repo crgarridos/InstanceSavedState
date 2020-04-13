@@ -8,7 +8,7 @@ class SongRepository @Inject constructor() {
     fun getSongsByName(name: String): List<Song> {
         return generateSequence(1, Long::inc)
             .map(::Song)
-            .take(50)
+            .take(150)
             .filter { name in it.id.toString() }
             .toList()
     }

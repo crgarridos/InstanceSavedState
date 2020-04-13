@@ -1,6 +1,6 @@
 package com.crgarridos.sample.savedstate.application
 
-import com.crgarridos.sample.savedstate.injection.DaggerAppComponent
+import com.crgarridos.sample.savedstate.application.injection.DaggerAppComponent
 import dagger.android.AndroidInjector
 import dagger.android.support.DaggerApplication
 import timber.log.Timber

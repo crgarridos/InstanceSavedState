@@ -1,4 +1,4 @@
-package com.crgarridos.sample.savedstate.extensions
+package com.crgarridos.sample.savedstate.application.extensions
 
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LiveData

@@ -1,4 +1,4 @@
-package com.crgarridos.sample.savedstate.injection.viewmodel
+package com.crgarridos.sample.savedstate.application.injection.viewmodel
 
 import androidx.lifecycle.AbstractSavedStateViewModelFactory
 import androidx.lifecycle.SavedStateHandle

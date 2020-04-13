@@ -1,8 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.MainActivity"/>
+    android:background="@android:color/background_light"
+    android:orientation="vertical"
+    android:padding="16dp"
+    tools:context=".ui.MainActivity">
+
+    <TextView
+        android:id="@+id/sampleTitleTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Samples: "
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
+    <RadioGroup
+        android:id="@+id/fragmentTypeRadioGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RadioButton
+            android:id="@+id/basicSampleButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Without saved instance state" />
+
+        <RadioButton
+            android:id="@+id/savedStateHandleSampleButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Using SavedStateViewModel library" />
+    </RadioGroup>
+
+
+</LinearLayout>

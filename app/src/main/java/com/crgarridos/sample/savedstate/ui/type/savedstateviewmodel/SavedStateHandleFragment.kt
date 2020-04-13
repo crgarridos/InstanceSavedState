@@ -1,11 +1,11 @@
-package com.crgarridos.sample.savedstate.ui.savedstateviewmodel
+package com.crgarridos.sample.savedstate.ui.type.savedstateviewmodel
 
 import android.os.Bundle
 import androidx.fragment.app.viewModels
 import com.crgarridos.sample.savedstate.R
 import com.crgarridos.sample.savedstate.domain.Song
-import com.crgarridos.sample.savedstate.extensions.observeNotNull
-import com.crgarridos.sample.savedstate.injection.viewmodel.SavedStateViewModelFactory
+import com.crgarridos.sample.savedstate.application.extensions.observeNotNull
+import com.crgarridos.sample.savedstate.application.injection.viewmodel.SavedStateViewModelFactory
 import dagger.android.support.DaggerFragment
 import kotlinx.android.synthetic.main.main_fragment.*
 import javax.inject.Inject

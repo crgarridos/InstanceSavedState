@@ -1,4 +1,4 @@
-package com.crgarridos.sample.savedstate.ui.savedstateviewmodel
+package com.crgarridos.sample.savedstate.ui.type.savedstateviewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -6,8 +6,8 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import com.crgarridos.sample.savedstate.domain.Song
 import com.crgarridos.sample.savedstate.domain.SongRepository
-import com.crgarridos.sample.savedstate.extensions.savedState
-import com.crgarridos.sample.savedstate.injection.viewmodel.ViewModelAssistedFactory
+import com.crgarridos.sample.savedstate.application.extensions.savedState
+import com.crgarridos.sample.savedstate.application.injection.viewmodel.ViewModelAssistedFactory
 import com.squareup.inject.assisted.Assisted
 import com.squareup.inject.assisted.AssistedInject
 
