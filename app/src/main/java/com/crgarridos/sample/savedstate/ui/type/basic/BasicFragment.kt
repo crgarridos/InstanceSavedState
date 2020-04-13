@@ -1,6 +1,7 @@
 package com.crgarridos.sample.savedstate.ui.type.basic
 
 import android.os.Bundle
+import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.viewModels
 import com.crgarridos.sample.savedstate.R
 import com.crgarridos.sample.savedstate.domain.Song
@@ -29,8 +30,8 @@ class BasicFragment : DaggerFragment(R.layout.main_fragment) {
 
     override fun onViewStateRestored(savedInstanceState: Bundle?) {
         super.onViewStateRestored(savedInstanceState)
-        searchButton.setOnClickListener {
-            viewModel.search(searchField.text.toString())
+        searchField.doOnTextChanged { text, _, _, _ ->
+            viewModel.search(text?.toString().orEmpty())
         }
     }
 

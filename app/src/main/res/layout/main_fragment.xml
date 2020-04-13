@@ -30,15 +30,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/title" />
-
-    <Button
-        android:id="@+id/searchButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Search"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/searchField" />
+        app:layout_constraintTop_toBottomOf="@id/title"
+        android:hint="Search"
+        android:digits="1234567890"
+        android:inputType="number"
+        />
 
     <ScrollView
         android:layout_width="match_parent"
@@ -47,7 +43,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/searchButton">
+        app:layout_constraintTop_toBottomOf="@id/searchField">
 
         <TextView
             android:id="@+id/message"

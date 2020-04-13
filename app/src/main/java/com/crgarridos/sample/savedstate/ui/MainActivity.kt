@@ -22,8 +22,10 @@ class MainActivity : DaggerAppCompatActivity(R.layout.main_activity) {
 
     private fun setFragment(fragment: Fragment) {
         val tag = fragment::class.qualifiedName
-        if (supportFragmentManager.findFragmentByTag(tag) == null) {
+            if (supportFragmentManager.findFragmentByTag(tag) == null) {
+            supportFragmentManager.popBackStack()
             supportFragmentManager.beginTransaction()
+                .addToBackStack(tag)
                 .replace(R.id.container, fragment, tag)
                 .commit()
         }
