@@ -2,10 +2,12 @@ package com.crgarridos.sample.savedstate.domain
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
+import kotlinx.coroutines.delay
 import javax.inject.Inject
 
 class SongRepository @Inject constructor() {
-    fun getSongsByName(name: String): List<Song> {
+    suspend fun getSongsByName(name: String): List<Song> {
+        delay(1000)
         return generateSequence(1, Long::inc)
             .map(::Song)
             .take(150)
@@ -15,4 +17,4 @@ class SongRepository @Inject constructor() {
 }
 
 @Parcelize
-data class Song(val id: Long): Parcelable
+data class Song(val id: Long) : Parcelable

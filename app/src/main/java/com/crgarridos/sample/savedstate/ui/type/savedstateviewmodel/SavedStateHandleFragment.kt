@@ -22,9 +22,7 @@ class SavedStateHandleFragment : DaggerFragment(R.layout.main_fragment) {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel.songResults.observeNotNull(viewLifecycleOwner) {
-            bindSongs(it)
-        }
+        viewModel.songResults.observeNotNull(viewLifecycleOwner, ::bindSongs)
     }
 
     override fun onViewStateRestored(savedInstanceState: Bundle?) {

@@ -1,15 +1,13 @@
 package com.crgarridos.sample.savedstate.ui.type.savedstateviewmodel
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.SavedStateHandle
-import androidx.lifecycle.ViewModel
+import androidx.lifecycle.*
 import com.crgarridos.sample.savedstate.domain.Song
 import com.crgarridos.sample.savedstate.domain.SongRepository
 import com.crgarridos.sample.savedstate.application.extensions.savedState
 import com.crgarridos.sample.savedstate.application.injection.viewmodel.ViewModelAssistedFactory
 import com.squareup.inject.assisted.Assisted
 import com.squareup.inject.assisted.AssistedInject
+import kotlinx.coroutines.launch
 
 
 class SavedStateHandleViewModel @AssistedInject constructor(
@@ -27,7 +25,9 @@ class SavedStateHandleViewModel @AssistedInject constructor(
 
     fun search(name: String) {
         this.name = name
-        _songResults.value = repository.getSongsByName(name)
+        viewModelScope.launch {
+            _songResults.value = repository.getSongsByName(name)
+        }
     }
 
     @AssistedInject.Factory

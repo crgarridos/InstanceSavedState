@@ -21,9 +21,12 @@ class MainActivity : DaggerAppCompatActivity(R.layout.main_activity) {
     }
 
     private fun setFragment(fragment: Fragment) {
-        supportFragmentManager.beginTransaction()
-            .replace(R.id.container, fragment, fragment::class.qualifiedName)
-            .commit()
+        val tag = fragment::class.qualifiedName
+        if (supportFragmentManager.findFragmentByTag(tag) == null) {
+            supportFragmentManager.beginTransaction()
+                .replace(R.id.container, fragment, tag)
+                .commit()
+        }
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
