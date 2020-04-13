@@ -21,71 +21,71 @@ class LogFragmentLifecycleCallbacks : FragmentManager.FragmentLifecycleCallbacks
         manager: FragmentManager,
         fragment: Fragment,
         context: Context
-    ) = log(fragment, "onFragmentPreAttached")
+    ) = log(fragment, "onPreAttach")
 
     override fun onFragmentAttached(
         manager: FragmentManager,
         fragment: Fragment,
         context: Context
-    ) = log(fragment, "onFragmentAttached")
+    ) = log(fragment, "onAttach")
 
     override fun onFragmentCreated(
         manager: FragmentManager,
         fragment: Fragment,
         savedInstanceState: Bundle?
-    ) = log(fragment, "onFragmentCreated", savedInstanceState)
+    ) = log(fragment, "onCreate", savedInstanceState)
 
     override fun onFragmentActivityCreated(
         manager: FragmentManager,
         fragment: Fragment,
         savedInstanceState: Bundle?
-    ) = log(fragment, "onFragmentActivityCreated", savedInstanceState)
+    ) = log(fragment, "onActivityCreated", savedInstanceState)
 
     override fun onFragmentViewCreated(
         manager: FragmentManager,
         fragment: Fragment,
         v: View,
         savedInstanceState: Bundle?
-    ) = log(fragment, "onFragmentViewCreated", savedInstanceState)
+    ) = log(fragment, "onViewCreated", savedInstanceState)
 
     override fun onFragmentStarted(
         manager: FragmentManager,
         fragment: Fragment
-    ) = log(fragment, "onFragmentStarted")
+    ) = log(fragment, "onStart")
 
     override fun onFragmentResumed(
         manager: FragmentManager,
         fragment: Fragment
-    ) = log(fragment, "onFragmentResumed")
+    ) = log(fragment, "onResume")
 
     override fun onFragmentPaused(
         manager: FragmentManager,
         fragment: Fragment
-    ) = log(fragment, "onFragmentPaused")
+    ) = log(fragment, "onPause")
 
     override fun onFragmentStopped(
         manager: FragmentManager,
         fragment: Fragment
-    ) = log(fragment, "onFragmentStopped")
+    ) = log(fragment, "onStop")
 
     override fun onFragmentSaveInstanceState(
         manager: FragmentManager,
         fragment: Fragment,
         outState: Bundle
-    ) = log(fragment, "onFragmentSaveInstanceState", outState)
+    ) = log(fragment, "onSaveInstanceState", outState)
 
     override fun onFragmentViewDestroyed(
         manager: FragmentManager,
         fragment: Fragment
-    ) = log(fragment, "onFragmentViewDestroyed")
+    ) = log(fragment, "onDestroyView")
 
     override fun onFragmentDestroyed(
         manager: FragmentManager,
         fragment: Fragment
-    ) = log(fragment, "onFragmentDestroyed")
+    ) = log(fragment, "onDestroy")
 
     override fun onFragmentDetached(
         manager: FragmentManager,
         fragment: Fragment
-    ) = log(fragment, "onFragmentDetached")
+    ) = log(fragment, "onDetach")
 }

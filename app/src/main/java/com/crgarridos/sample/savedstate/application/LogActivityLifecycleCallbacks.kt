@@ -23,24 +23,24 @@ class LogActivityLifecycleCallbacks : Application.ActivityLifecycleCallbacks {
     override fun onActivityCreated(
         activity: Activity,
         savedInstanceState: Bundle?
-    ) = log(activity, "onActivityCreated", savedInstanceState).also {
+    ) = log(activity, "onCreate", savedInstanceState).also {
         with(activity as AppCompatActivity) {
             supportFragmentManager.registerFragmentLifecycleCallbacks(fragmentLifecycleCallbacks, true)
         }
     }
 
-    override fun onActivityStarted(activity: Activity) = log(activity, "onActivityStarted")
+    override fun onActivityStarted(activity: Activity) = log(activity, "onStart")
 
-    override fun onActivityResumed(activity: Activity) = log(activity, "onActivityResumed")
+    override fun onActivityResumed(activity: Activity) = log(activity, "onResume")
 
-    override fun onActivityPaused(activity: Activity) = log(activity, "onActivityPaused")
+    override fun onActivityPaused(activity: Activity) = log(activity, "onPause")
 
-    override fun onActivityStopped(activity: Activity) = log(activity, "onActivityStopped")
+    override fun onActivityStopped(activity: Activity) = log(activity, "onStop")
 
     override fun onActivitySaveInstanceState(
         activity: Activity,
         outState: Bundle
-    ) = log(activity, "onActivitySaveInstanceState", outState)
+    ) = log(activity, "onSaveInstanceState", outState)
 
-    override fun onActivityDestroyed(activity: Activity) = log(activity, "onActivityDestroyed")
+    override fun onActivityDestroyed(activity: Activity) = log(activity, "onDestroy")
 }
