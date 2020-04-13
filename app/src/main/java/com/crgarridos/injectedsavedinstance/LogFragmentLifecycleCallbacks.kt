@@ -9,9 +9,13 @@ import timber.log.Timber
 
 class LogFragmentLifecycleCallbacks : FragmentManager.FragmentLifecycleCallbacks() {
 
-    private fun log(fragment: Fragment, event: String, bundle: Bundle? = null) = Timber
+    private fun log(fragment: Fragment, event: String) = Timber
         .tag("LifecycleEvent")
-        .v("${fragment::class.simpleName}.$event${bundle?.let { " $it" }.orEmpty()}")
+        .v("${fragment::class.simpleName}.$event")
+
+    private fun log(fragment: Fragment, event: String, bundle: Bundle?) = Timber
+        .tag("LifecycleEvent")
+        .v("${fragment::class.simpleName}.$event state=$bundle")
 
     override fun onFragmentPreAttached(
         manager: FragmentManager,
@@ -29,20 +33,20 @@ class LogFragmentLifecycleCallbacks : FragmentManager.FragmentLifecycleCallbacks
         manager: FragmentManager,
         fragment: Fragment,
         savedInstanceState: Bundle?
-    ) = log(fragment, "onFragmentCreated")
+    ) = log(fragment, "onFragmentCreated", savedInstanceState)
 
     override fun onFragmentActivityCreated(
         manager: FragmentManager,
         fragment: Fragment,
         savedInstanceState: Bundle?
-    ) = log(fragment, "onFragmentActivityCreated")
+    ) = log(fragment, "onFragmentActivityCreated", savedInstanceState)
 
     override fun onFragmentViewCreated(
         manager: FragmentManager,
         fragment: Fragment,
         v: View,
         savedInstanceState: Bundle?
-    ) = log(fragment, "onFragmentViewCreated")
+    ) = log(fragment, "onFragmentViewCreated", savedInstanceState)
 
     override fun onFragmentStarted(
         manager: FragmentManager,

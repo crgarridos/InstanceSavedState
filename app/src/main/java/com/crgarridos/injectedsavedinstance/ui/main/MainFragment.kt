@@ -14,7 +14,7 @@ import dagger.android.support.DaggerFragment
 import kotlinx.android.synthetic.main.main_fragment.*
 import javax.inject.Inject
 
-class MainFragment : DaggerFragment() {
+class MainFragment : DaggerFragment(R.layout.main_fragment) {
 
     companion object {
         fun newInstance(): MainFragment = MainFragment()
@@ -22,9 +22,6 @@ class MainFragment : DaggerFragment() {
 
     @Inject lateinit var factory: ViewModelFactory<MainViewModel, MainViewModel.AssistedFactory>
     private val viewModel: MainViewModel by viewModels { factory }
-
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, s: Bundle?): View? =
-        inflater.inflate(R.layout.main_fragment, container, false)
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)

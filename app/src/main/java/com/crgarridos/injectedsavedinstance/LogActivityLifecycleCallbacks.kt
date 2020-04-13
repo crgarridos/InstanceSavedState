@@ -8,16 +8,21 @@ import timber.log.Timber
 
 class LogActivityLifecycleCallbacks : Application.ActivityLifecycleCallbacks {
 
-    private fun log(activity: Activity, event: String, bundle: Bundle? = null) = Timber
+    private fun log(activity: Activity, event: String) = Timber
         .tag("LifecycleEvent")
-        .v("${activity::class.simpleName}.$event${bundle?.let { " $it" }.orEmpty()}")
+        .v("${activity::class.simpleName}.$event")
+
+
+    private fun log(activity: Activity, event: String, bundle: Bundle?) = Timber
+        .tag("LifecycleEvent")
+        .v("${activity::class.simpleName}.$event state=$bundle")
 
     private val fragmentLifecycleCallbacks = LogFragmentLifecycleCallbacks()
 
     override fun onActivityCreated(
         activity: Activity,
         savedInstanceState: Bundle?
-    ) = log(activity, "onActivityCreated").also {
+    ) = log(activity, "onActivityCreated", savedInstanceState).also {
         with(activity as AppCompatActivity) {
             supportFragmentManager.registerFragmentLifecycleCallbacks(fragmentLifecycleCallbacks, true)
         }
