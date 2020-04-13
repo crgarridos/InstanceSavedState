@@ -1,6 +1,6 @@
 package com.crgarridos.sample.savedstate.injection
 
-import com.crgarridos.sample.savedstate.DemoApp
+import com.crgarridos.sample.savedstate.application.DemoApp
 import com.crgarridos.sample.savedstate.ui.main.injection.ActivityModule
 import dagger.BindsInstance
 import dagger.Component

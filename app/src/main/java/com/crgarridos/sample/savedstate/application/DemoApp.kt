@@ -1,4 +1,4 @@
-package com.crgarridos.sample.savedstate
+package com.crgarridos.sample.savedstate.application
 
 import com.crgarridos.sample.savedstate.injection.DaggerAppComponent
 import dagger.android.AndroidInjector

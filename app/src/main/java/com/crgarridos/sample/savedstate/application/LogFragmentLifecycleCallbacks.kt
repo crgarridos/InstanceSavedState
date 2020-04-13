@@ -1,4 +1,4 @@
-package com.crgarridos.sample.savedstate
+package com.crgarridos.sample.savedstate.application
 
 import android.content.Context
 import android.os.Bundle
