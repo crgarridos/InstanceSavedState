@@ -1,4 +1,4 @@
-package com.crgarridos.sample.savedstate.ui.main
+package com.crgarridos.sample.savedstate.ui.savedstateviewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -12,7 +12,7 @@ import com.squareup.inject.assisted.Assisted
 import com.squareup.inject.assisted.AssistedInject
 
 
-class MainViewModel @AssistedInject constructor(
+class SavedStateHandleViewModel @AssistedInject constructor(
     private val repository: SongRepository,
     @Assisted private val handle: SavedStateHandle
 ) : ViewModel() {
@@ -31,5 +31,5 @@ class MainViewModel @AssistedInject constructor(
     }
 
     @AssistedInject.Factory
-    interface AssistedFactory: ViewModelAssistedFactory<MainViewModel>
+    interface AssistedFactory: ViewModelAssistedFactory<SavedStateHandleViewModel>
 }

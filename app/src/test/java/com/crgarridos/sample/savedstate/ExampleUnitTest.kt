@@ -1,4 +1,4 @@
-package com.crgarridos.injectedsavedinstance
+package com.crgarridos.sample.savedstate
 
 import org.junit.Test
 

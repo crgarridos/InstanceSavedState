@@ -1,7 +1,8 @@
-package com.crgarridos.sample.savedstate
+package com.crgarridos.sample.savedstate.ui
 
 import android.os.Bundle
-import com.crgarridos.sample.savedstate.ui.main.MainFragment
+import com.crgarridos.sample.savedstate.R
+import com.crgarridos.sample.savedstate.ui.savedstateviewmodel.SavedStateHandleFragment
 import dagger.android.support.DaggerAppCompatActivity
 
 class MainActivity : DaggerAppCompatActivity(R.layout.main_activity) {
@@ -10,7 +11,7 @@ class MainActivity : DaggerAppCompatActivity(R.layout.main_activity) {
         super.onCreate(savedInstanceState)
         if (savedInstanceState == null) {
             supportFragmentManager.beginTransaction()
-                .replace(R.id.container, MainFragment.newInstance())
+                .replace(R.id.container, SavedStateHandleFragment.newInstance())
                 .commitNow()
         }
     }
