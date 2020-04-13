@@ -1,4 +1,4 @@
-package com.crgarridos.injectedsavedinstance
+package com.crgarridos.sample.savedstate
 
 import android.app.Activity
 import android.app.Application
@@ -17,7 +17,8 @@ class LogActivityLifecycleCallbacks : Application.ActivityLifecycleCallbacks {
         .tag("LifecycleEvent")
         .v("${activity::class.simpleName}.$event state=$bundle")
 
-    private val fragmentLifecycleCallbacks = LogFragmentLifecycleCallbacks()
+    private val fragmentLifecycleCallbacks =
+        LogFragmentLifecycleCallbacks()
 
     override fun onActivityCreated(
         activity: Activity,

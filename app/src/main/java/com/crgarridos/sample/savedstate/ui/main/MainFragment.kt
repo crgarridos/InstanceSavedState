@@ -1,15 +1,11 @@
-package com.crgarridos.injectedsavedinstance.ui.main
+package com.crgarridos.sample.savedstate.ui.main
 
 import android.os.Bundle
-import android.util.Log
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import com.crgarridos.injectedsavedinstance.R
-import com.crgarridos.injectedsavedinstance.domain.Song
-import com.crgarridos.injectedsavedinstance.extensions.observeNotNull
-import com.crgarridos.injectedsavedinstance.injection.viewmodel.ViewModelFactory
+import com.crgarridos.sample.savedstate.domain.Song
+import com.crgarridos.sample.savedstate.extensions.observeNotNull
+import com.crgarridos.sample.savedstate.injection.viewmodel.ViewModelFactory
 import dagger.android.support.DaggerFragment
 import kotlinx.android.synthetic.main.main_fragment.*
 import javax.inject.Inject

@@ -1,4 +1,4 @@
-package com.crgarridos.injectedsavedinstance.extensions
+package com.crgarridos.sample.savedstate.extensions
 
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel

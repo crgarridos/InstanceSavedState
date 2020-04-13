@@ -1,8 +1,7 @@
-package com.crgarridos.injectedsavedinstance
+package com.crgarridos.sample.savedstate
 
 import android.os.Bundle
-import android.util.Log
-import com.crgarridos.injectedsavedinstance.ui.main.MainFragment
+import com.crgarridos.sample.savedstate.ui.main.MainFragment
 import dagger.android.support.DaggerAppCompatActivity
 
 class MainActivity : DaggerAppCompatActivity(R.layout.main_activity) {

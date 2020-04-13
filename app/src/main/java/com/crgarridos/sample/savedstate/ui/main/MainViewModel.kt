@@ -1,13 +1,13 @@
-package com.crgarridos.injectedsavedinstance.ui.main
+package com.crgarridos.sample.savedstate.ui.main
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
-import com.crgarridos.injectedsavedinstance.domain.Song
-import com.crgarridos.injectedsavedinstance.domain.SongRepository
-import com.crgarridos.injectedsavedinstance.extensions.savedState
-import com.crgarridos.injectedsavedinstance.injection.viewmodel.ViewModelAssistedFactory
+import com.crgarridos.sample.savedstate.domain.Song
+import com.crgarridos.sample.savedstate.domain.SongRepository
+import com.crgarridos.sample.savedstate.extensions.savedState
+import com.crgarridos.sample.savedstate.injection.viewmodel.ViewModelAssistedFactory
 import com.squareup.inject.assisted.Assisted
 import com.squareup.inject.assisted.AssistedInject
 

@@ -1,4 +1,4 @@
-package com.crgarridos.injectedsavedinstance.domain
+package com.crgarridos.sample.savedstate.domain
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize

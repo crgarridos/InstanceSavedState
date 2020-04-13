@@ -1,7 +1,7 @@
-package com.crgarridos.injectedsavedinstance.ui.main.injection
+package com.crgarridos.sample.savedstate.ui.main.injection
 
-import com.crgarridos.injectedsavedinstance.MainActivity
-import com.crgarridos.injectedsavedinstance.ui.main.MainFragment
+import com.crgarridos.sample.savedstate.MainActivity
+import com.crgarridos.sample.savedstate.ui.main.MainFragment
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 

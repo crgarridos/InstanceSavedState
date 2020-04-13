@@ -1,6 +1,6 @@
-package com.crgarridos.injectedsavedinstance
+package com.crgarridos.sample.savedstate
 
-import com.crgarridos.injectedsavedinstance.injection.DaggerAppComponent
+import com.crgarridos.sample.savedstate.injection.DaggerAppComponent
 import dagger.android.AndroidInjector
 import dagger.android.support.DaggerApplication
 import timber.log.Timber

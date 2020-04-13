@@ -1,6 +1,5 @@
-package com.crgarridos.injectedsavedinstance.extensions
+package com.crgarridos.sample.savedstate.extensions
 
-import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer

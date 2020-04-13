@@ -1,4 +1,4 @@
-package com.crgarridos.injectedsavedinstance
+package com.crgarridos.sample.savedstate
 
 import android.content.Context
 import android.os.Bundle

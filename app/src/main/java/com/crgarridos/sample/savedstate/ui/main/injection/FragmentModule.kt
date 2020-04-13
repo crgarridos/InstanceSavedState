@@ -1,7 +1,7 @@
-package com.crgarridos.injectedsavedinstance.ui.main.injection
+package com.crgarridos.sample.savedstate.ui.main.injection
 
 import androidx.savedstate.SavedStateRegistryOwner
-import com.crgarridos.injectedsavedinstance.ui.main.MainFragment
+import com.crgarridos.sample.savedstate.ui.main.MainFragment
 import com.squareup.inject.assisted.dagger2.AssistedModule
 import dagger.Binds
 import dagger.Module
