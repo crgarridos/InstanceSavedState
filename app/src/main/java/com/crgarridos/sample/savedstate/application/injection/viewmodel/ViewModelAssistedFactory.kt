@@ -10,16 +10,15 @@ interface ViewModelAssistedFactory<T: ViewModel> {
     fun create(handle: SavedStateHandle): T
 }
 
-class SavedStateViewModelFactory<VM, AF> @Inject constructor(
-    private val factory: AF, owner: SavedStateRegistryOwner
+class SavedStateViewModelFactory<VM, AssistedFactory> @Inject constructor(
+    owner: SavedStateRegistryOwner,
+    private val factory: AssistedFactory
 ) : AbstractSavedStateViewModelFactory(owner, null)
-        where VM: ViewModel, AF: ViewModelAssistedFactory<VM> {
+        where VM: ViewModel, AssistedFactory: ViewModelAssistedFactory<VM> {
 
     override fun <VM : ViewModel?> create(
         key: String,
         modelClass: Class<VM>,
         handle: SavedStateHandle
-    ): VM {
-        return factory.create(handle) as VM
-    }
+    ): VM = factory.create(handle) as VM
 }
