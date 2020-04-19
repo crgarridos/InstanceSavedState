@@ -32,8 +32,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/title"
         android:hint="Search"
-        android:digits="1234567890"
-        android:inputType="number"
         />
 
     <ScrollView
