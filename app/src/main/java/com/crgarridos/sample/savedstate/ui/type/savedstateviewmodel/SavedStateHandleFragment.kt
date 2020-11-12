@@ -8,6 +8,7 @@ import androidx.fragment.app.viewModels
 import com.crgarridos.sample.savedstate.R
 import com.crgarridos.sample.savedstate.application.extensions.observeNotNull
 import com.crgarridos.sample.savedstate.domain.Song
+import com.crgarridos.sample.savedstate.ui.type.savedstateviewmodel.SavedStateHandleViewModel.Companion.NAME_SAVED_STATE_KEY
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.main_fragment.*
 
@@ -15,14 +16,9 @@ import kotlinx.android.synthetic.main.main_fragment.*
 class SavedStateHandleFragment : Fragment(R.layout.main_fragment) {
 
     companion object {
-        fun newInstance(): SavedStateHandleFragment =
-            SavedStateHandleFragment().apply {
-                arguments  = bundleOf("fragmentArguments" to "fragmentArgument")
-            }
-    }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+        fun newInstance(name: String? = null): SavedStateHandleFragment = SavedStateHandleFragment().apply {
+            arguments = bundleOf(NAME_SAVED_STATE_KEY to name)
+        }
     }
 
     private val viewModel: SavedStateHandleViewModel by viewModels()
@@ -30,11 +26,6 @@ class SavedStateHandleFragment : Fragment(R.layout.main_fragment) {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel.songResults.observeNotNull(viewLifecycleOwner, ::bindSongs)
-    }
-
-    override fun onSaveInstanceState(outState: Bundle) {
-        super.onSaveInstanceState(outState)
-        println("")
     }
 
     override fun onViewStateRestored(savedInstanceState: Bundle?) {

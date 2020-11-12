@@ -2,7 +2,6 @@ package com.crgarridos.sample.savedstate.ui
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import com.crgarridos.sample.savedstate.R
 import com.crgarridos.sample.savedstate.ui.type.basic.BasicFragment
