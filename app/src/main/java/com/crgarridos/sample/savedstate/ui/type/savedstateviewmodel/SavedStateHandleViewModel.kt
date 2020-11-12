@@ -10,25 +10,22 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
 
+private const val NAME_SAVED_STATE_KEY = "name"
+
 class SavedStateHandleViewModel @ViewModelInject constructor(
     private val repository: SongRepository,
     @Assisted private val handle: SavedStateHandle
 ) : ViewModel() {
 
-    private var name by savedState<String>("name", handle)
-
     private var searchJob: Job? = null
-    private val _songResults = MutableLiveData<List<Song>>()
-    val songResults: LiveData<List<Song>>
-        get() = _songResults
-
-    init { name?.let(::search) }
+    val songResults: LiveData<List<Song>> = handle.getLiveData<String>(NAME_SAVED_STATE_KEY).switchMap { name ->
+        liveData {
+            emit(repository.getSongsByName(name))
+        }
+    }
 
     fun search(name: String) {
-        this.name = name
         searchJob?.cancel()
-        searchJob = viewModelScope.launch {
-            _songResults.value = repository.getSongsByName(name)
-        }
+        handle.set(NAME_SAVED_STATE_KEY, name)
     }
 }
