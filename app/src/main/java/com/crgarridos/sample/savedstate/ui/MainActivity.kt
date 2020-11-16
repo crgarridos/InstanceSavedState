@@ -6,11 +6,9 @@ import androidx.fragment.app.Fragment
 import com.crgarridos.sample.savedstate.R
 import com.crgarridos.sample.savedstate.ui.type.basic.BasicFragment
 import com.crgarridos.sample.savedstate.ui.type.savedstateviewmodel.SavedStateHandleFragment
-import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.main_activity.*
 import timber.log.Timber
 
-@AndroidEntryPoint
 class MainActivity : AppCompatActivity(R.layout.main_activity) {
 
     override fun onCreate(savedInstanceState: Bundle?) {

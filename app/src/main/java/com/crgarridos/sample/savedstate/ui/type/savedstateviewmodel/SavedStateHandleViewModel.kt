@@ -1,15 +1,13 @@
 package com.crgarridos.sample.savedstate.ui.type.savedstateviewmodel
 
-import androidx.hilt.Assisted
-import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.*
 import com.crgarridos.sample.savedstate.domain.Song
 import com.crgarridos.sample.savedstate.domain.SongRepository
 
 
-class SavedStateHandleViewModel @ViewModelInject constructor(
+class SavedStateHandleViewModel(
     private val repository: SongRepository,
-    @Assisted private val handle: SavedStateHandle
+    private val handle: SavedStateHandle
 ) : ViewModel() {
 
     companion object {

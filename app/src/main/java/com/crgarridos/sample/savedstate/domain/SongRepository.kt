@@ -4,11 +4,9 @@ import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
 import kotlinx.coroutines.delay
 import java.util.*
-import javax.inject.Inject
 import kotlin.random.Random
-import kotlin.random.nextUBytes
 
-class SongRepository @Inject constructor() {
+class SongRepository {
     suspend fun getSongsByName(name: String): List<Song> {
         delay(200)
         val sanitizedName = name.toUpperCase(Locale.getDefault())

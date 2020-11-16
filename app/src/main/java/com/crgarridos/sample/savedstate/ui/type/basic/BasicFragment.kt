@@ -7,13 +7,11 @@ import androidx.fragment.app.viewModels
 import com.crgarridos.sample.savedstate.R
 import com.crgarridos.sample.savedstate.application.extensions.observeNotNull
 import com.crgarridos.sample.savedstate.domain.Song
-import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.main_fragment.*
 
 /**
  * This is a basic fragment sample. It does not manage saved instance state
  */
-@AndroidEntryPoint
 class BasicFragment : Fragment(R.layout.main_fragment) {
 
     companion object {

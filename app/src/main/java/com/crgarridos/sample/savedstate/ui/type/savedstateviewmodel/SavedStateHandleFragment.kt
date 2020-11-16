@@ -9,10 +9,8 @@ import com.crgarridos.sample.savedstate.R
 import com.crgarridos.sample.savedstate.application.extensions.observeNotNull
 import com.crgarridos.sample.savedstate.domain.Song
 import com.crgarridos.sample.savedstate.ui.type.savedstateviewmodel.SavedStateHandleViewModel.Companion.NAME_SAVED_STATE_KEY
-import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.main_fragment.*
 
-@AndroidEntryPoint
 class SavedStateHandleFragment : Fragment(R.layout.main_fragment) {
 
     companion object {
