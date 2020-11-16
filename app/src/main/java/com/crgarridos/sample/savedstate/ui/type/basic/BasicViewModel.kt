@@ -1,9 +1,6 @@
 package com.crgarridos.sample.savedstate.ui.type.basic
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
 import com.crgarridos.sample.savedstate.domain.Song
 import com.crgarridos.sample.savedstate.domain.SongRepository
 import kotlinx.coroutines.Job
@@ -22,6 +19,12 @@ class BasicViewModel(
         searchJob?.cancel()
         searchJob = viewModelScope.launch {
             _songResults.value = repository.getSongsByName(name)
+        }
+    }
+
+    class Factory(private val repository: SongRepository) : ViewModelProvider.Factory {
+        override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+            return BasicViewModel(repository) as T
         }
     }
 }

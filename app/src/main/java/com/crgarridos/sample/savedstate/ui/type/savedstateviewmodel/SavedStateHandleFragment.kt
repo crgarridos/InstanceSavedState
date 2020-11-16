@@ -6,6 +6,7 @@ import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.crgarridos.sample.savedstate.R
+import com.crgarridos.sample.savedstate.ServiceLocator
 import com.crgarridos.sample.savedstate.application.extensions.observeNotNull
 import com.crgarridos.sample.savedstate.domain.Song
 import com.crgarridos.sample.savedstate.ui.type.savedstateviewmodel.SavedStateHandleViewModel.Companion.NAME_SAVED_STATE_KEY
@@ -19,7 +20,9 @@ class SavedStateHandleFragment : Fragment(R.layout.main_fragment) {
         }
     }
 
-    private val viewModel: SavedStateHandleViewModel by viewModels()
+    private val viewModel: SavedStateHandleViewModel by viewModels {
+        ServiceLocator.getSavedStateHandleViewModelFactory(this, arguments)
+    }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)

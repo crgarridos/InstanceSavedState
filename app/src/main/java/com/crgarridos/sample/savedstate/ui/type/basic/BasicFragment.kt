@@ -5,8 +5,10 @@ import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.crgarridos.sample.savedstate.R
+import com.crgarridos.sample.savedstate.ServiceLocator
 import com.crgarridos.sample.savedstate.application.extensions.observeNotNull
 import com.crgarridos.sample.savedstate.domain.Song
+import com.crgarridos.sample.savedstate.domain.SongRepository
 import kotlinx.android.synthetic.main.main_fragment.*
 
 /**
@@ -18,7 +20,7 @@ class BasicFragment : Fragment(R.layout.main_fragment) {
         fun newInstance(): BasicFragment = BasicFragment()
     }
 
-    private val viewModel: BasicViewModel by viewModels()
+    private val viewModel: BasicViewModel by viewModels { ServiceLocator.getBasicViewModelFactory() }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
