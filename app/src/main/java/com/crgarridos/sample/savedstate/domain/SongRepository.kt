@@ -10,12 +10,13 @@ import kotlin.random.nextUBytes
 
 class SongRepository @Inject constructor() {
     suspend fun getSongsByName(name: String): List<Song> {
-        delay(1000)
+        delay(200)
         val sanitizedName = name.toUpperCase(Locale.getDefault())
+
         return generateSequence(1, Long::inc)
-            .map { Song(it, Random.nextString(10)) }
+            .map { Song(it, Random(it).nextString(10)) }
             .take(250)
-            .filter { sanitizedName in it.name }
+            .filter { sanitizedName in it.name || sanitizedName in it.id.toString() }
             .toList()
     }
 }

@@ -16,9 +16,10 @@ class SavedStateHandleViewModel @ViewModelInject constructor(
         const val NAME_SAVED_STATE_KEY = "name"
     }
 
-    val songResults: LiveData<List<Song>> = handle.getLiveData<String>(NAME_SAVED_STATE_KEY).switchMap { name ->
+    val songResults: LiveData<List<Song>> = handle.getLiveData<String?>(NAME_SAVED_STATE_KEY).switchMap { name ->
         liveData {
-            emit(repository.getSongsByName(name))
+            if (!name.isNullOrBlank())
+                emit(repository.getSongsByName(name))
         }
     }
 
