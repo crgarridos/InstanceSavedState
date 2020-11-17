@@ -2,25 +2,26 @@ package com.crgarridos.sample.savedstate.ui.type.basic
 
 import android.os.Bundle
 import androidx.core.widget.doOnTextChanged
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.crgarridos.sample.savedstate.R
-import com.crgarridos.sample.savedstate.application.extensions.observeNotNull
 import com.crgarridos.sample.savedstate.domain.Song
-import dagger.hilt.android.AndroidEntryPoint
+import com.crgarridos.sample.savedstate.application.extensions.observeNotNull
+import com.crgarridos.sample.savedstate.application.injection.viewmodel.ViewModelFactory
+import dagger.android.support.DaggerFragment
 import kotlinx.android.synthetic.main.main_fragment.*
+import javax.inject.Inject
 
 /**
  * This is a basic fragment sample. It does not manage saved instance state
  */
-@AndroidEntryPoint
-class BasicFragment : Fragment(R.layout.main_fragment) {
+class BasicFragment : DaggerFragment(R.layout.main_fragment) {
 
     companion object {
         fun newInstance(): BasicFragment = BasicFragment()
     }
 
-    private val viewModel: BasicViewModel by viewModels()
+    @Inject lateinit var factory: ViewModelFactory<BasicViewModel>
+    private val viewModel: BasicViewModel by viewModels { factory }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)

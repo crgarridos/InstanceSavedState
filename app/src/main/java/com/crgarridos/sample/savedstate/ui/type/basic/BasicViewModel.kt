@@ -1,6 +1,5 @@
 package com.crgarridos.sample.savedstate.ui.type.basic
 
-import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -9,8 +8,9 @@ import com.crgarridos.sample.savedstate.domain.Song
 import com.crgarridos.sample.savedstate.domain.SongRepository
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class BasicViewModel @ViewModelInject constructor(
+class BasicViewModel @Inject constructor(
     private val repository: SongRepository
 ) : ViewModel() {
 
