@@ -5,7 +5,10 @@ This repository is the playground used for the talk:
 
 **_Process death and state restoration in ViewModels_** at the [DroidCon Americas 2020][droidcon]
 
-Slides can be found [here][slides]
+[![Video Here](imgs/droidcon.jpg)](droidcon_video)
+Video here 👆🏼
+
+Slides can be found [here][slides] 👈🏼
 
 ## Repo branches
 
@@ -32,4 +35,5 @@ This repository contains three branches to approche differents DI solutions:
     - https://www.reddit.com/r/androiddev/comments/g2cdid/venom_a_lightweight_tool_that_simplifies_testing/
 
 [droidcon]: https://www.online.droidcon.com/agenda-dcamericas
+[droidcon_video]: https://www.droidcon.com/media-detail?video=480548191
 [slides]: https://speakerdeck.com/crgarridos/managing-android-process-instance-state-8a8577da-8e5f-4f73-9b19-bd302903ec10?slide=111
