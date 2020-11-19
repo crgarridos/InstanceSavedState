@@ -5,7 +5,7 @@ This repository is the playground used for the talk:
 
 **_Process death and state restoration in ViewModels_** at the [DroidCon Americas 2020][droidcon]
 
-[![Video Here](imgs/droidcon.jpg)](droidcon_video)
+[![Video Here](imgs/droidcon.jpg)][droidcon_video]
 Video here 👆🏼
 
 Slides can be found [here][slides] 👈🏼
